@@ -60,6 +60,7 @@ def parse_arguments():
     parser.add_argument('--debug',      dest='debug',        type=bool,     default=False,           help="enable webkit debug console (default: False)")
     parser.add_argument('--minimized',  dest='minimized',    type=bool,     default=False,           help="start minimized to tray (default: False)")
     parser.add_argument('--no_plugins', dest='no_plugins',   type=bool,     default=False,           help="disable web plugins (default: False)")
+    parser.add_argument('-v', '--version', action='version', version='scudcloud 1.0.55')
     args = parser.parse_args()
     args.confdir = expanduser(args.confdir)
     return args
