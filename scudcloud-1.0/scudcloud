@@ -22,6 +22,8 @@ from qsingleapplication import QSingleApplication
 # and the configuration directory will be $XDG_CONFIG_HOME/scudcloud instead.
 CONFDIR = '~/.config/scudcloud'
 
+VERSION = '1.0.55'
+
 def main():
     Resources.INSTALL_DIR = get_install_dir()
     app = QSingleApplication(sys.argv)
@@ -48,8 +50,6 @@ def load_settings(confdir):
         sys.path[0:0] = [confdir]
     return confdir
 
-import subprocess
-
 def parse_arguments():
     from argparse import ArgumentParser
     from os.path import expanduser
@@ -62,7 +62,7 @@ def parse_arguments():
     parser.add_argument('--debug',      dest='debug',        type=bool,     default=False,           help="enable webkit debug console (default: False)")
     parser.add_argument('--minimized',  dest='minimized',    type=bool,     default=False,           help="start minimized to tray (default: False)")
     parser.add_argument('--no_plugins', dest='no_plugins',   type=bool,     default=False,           help="disable web plugins (default: False)")
-    parser.add_argument('-v', '--version', action='version', version=subprocess.check_output(["rpm", "-q", "scudcloud"]).decode('utf-8'))
+    parser.add_argument('-v', '--version', action='version', version='scudcloud ' + VERSION)
     args = parser.parse_args()
     args.confdir = expanduser(args.confdir)
     return args
